@@ -34,6 +34,58 @@ class ResetPassPageView(TemplateView):
 	template_name = "reset.html"
 
 
+
+from django.contrib.auth import authenticate
+
+
+def resetPassword(request):
+	if request.method == 'POST':
+		print('hi')
+		emailid=request.POST.get('emailid')
+		movie=request.POST.get('movie')
+		dessert=request.POST.get('dessert')
+		password=request.POST.get('newpassword')
+		rpassword = request.POST.get('copynpass')
+		x=Post.objects.filter(emailid=emailid)
+		try:
+			if x[0].movie==movie and x[0].dessert==dessert:
+				request.session['emailid'] =x[0].emailid
+				if password==rpassword:
+					Post.objects.filter(emailid=emailid).update(password=password)
+					output = render(request,'login.html')
+				else:
+					output = render(request,'reset.html')
+			else:
+				output=render(request,'reset.html')
+		except:
+			output = render(request,'failed.html')
+
+	return output
+
+'''
+def resetPassword(request):
+	print("say hi")
+	if request.method == 'POST':
+		emailid = request.POST.get('emailid')
+		movie = request.POST.get('movie')
+		dessert = request.POST.get('dessert')
+		password = request.POST.get('newpassword')
+		#rpassword = request.POST.get('copynpass')
+
+		try:
+			user = authenticate(emailid=emailid, movie=movie, dessert=dessert)
+			if user is not None:
+				Post.objects.filter(emailid=emailid).update(password=password)
+				output = render(request, 'login.html')
+			else:
+				output = render(request, 'reset.html')
+		except:
+			output = render(request, 'failed.html')
+
+		return output
+
+'''
+
 def register(request):
 	if request.method == 'POST':
 		if request.POST.get('name') and request.POST.get('emailid') and request.POST.get('password'):
@@ -90,7 +142,7 @@ def createBlog(request):
 
 		else:
 			return render(request, 'failed.html')
-
+'''
 def resetPassword(request):
 	if request.method == 'POST':
 		print('hi')
@@ -109,32 +161,9 @@ def resetPassword(request):
 				else:
 					output = render(request,'reset.html')
 		except:
-			soutput = render(request,'failed.html')
+			output = render(request,'failed.html')
 
 	return output
 
 '''
 
-from django.contrib.auth import authenticate
-
-
-def resetPassword(request):
-	if request.method == 'POST':
-		emailid = request.POST.get('emailid')
-		movie = request.POST.get('movie')
-		dessert = request.POST.get('dessert')
-		password = request.POST.get('newpassword')
-		rpassword = request.POST.get('copynpass')
-
-		try:
-			user = authenticate(emailid=emailid, movie=movie, dessert=dessert)
-			if user is not None:
-				Post.objects.filter(emailid=emailid).update(password=password)
-				output = render(request, 'login.html')
-			else:
-				output = render(request, 'reset.html')
-		except:
-			output = render(request, 'failed.html')
-
-		return output
-'''
