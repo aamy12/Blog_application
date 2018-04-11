@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^viewblog', views.ViewBlogPageView.as_view()),
 
     url(r'^reset', views.ResetPassPageView.as_view()),
-    url(r'^resetpass', views.resetPassword)
+    url(r'^passwordreset', views.resetPassword),
+
  ]
 
