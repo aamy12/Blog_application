@@ -1,0 +1,39 @@
+<html>
+<style>
+
+h1 {
+    		background-color: orange;
+	        font-size: 20px;
+    		text-align: center;
+	   }
+
+body{
+    	text-align: center;
+    }
+</style>
+<head>
+</head>
+
+<body>
+<h1>REGISTRATION </h1>
+
+<form action="/register/login" method="POST">
+{% csrf_token %}
+NAME: <input type="text" name="name"/><br/>
+EMAIL ID :<input type="text" name="emailid"/><br/>
+PASSWORD :<input type="password" name="password"/><br/>
+<br>
+<br>
+Enter answer to the following Security Questions :
+<br>
+FAVOURITE MOVIE ? :<input type="text" name="movie"/><br/>
+FAVOURITE DESSERT ? :<input type="text" name="dessert"/><br/>
+<br>
+<br>
+
+<input type="submit" value="REGISTER"/>
+</form>
+
+</body>
+
+</html>

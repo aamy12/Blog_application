@@ -1,0 +1,32 @@
+<html>
+<style>
+
+h1 {
+    		background-color: orange;
+	        font-size: 20px;
+    		text-align: center;
+	   }
+
+body{
+    	text-align: center;
+    }
+</style>
+<head>
+</head>
+
+<body>
+<h1>LOGIN</h1>
+
+<form action="/logincheck" method="POST">
+{% csrf_token %}
+
+EMAIL ID :<input type="text" name="emailid"/><br/>
+PASSWORD :<input type="password" name="password"/><br/>
+<br>
+<br>
+<input type="submit" value="LOGIN"/>
+</form>
+
+</body>
+
+</html>

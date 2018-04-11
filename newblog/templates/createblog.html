@@ -1,0 +1,29 @@
+<html>
+<style>
+body {
+    background-color: lightblue;
+
+     }
+h1 {
+
+	        font-size: 20px;
+    		text-align: center;
+	   }
+</style>
+<head>
+<title>LET YOUR IDEAS OUT </title>
+</head>
+
+<body>
+<h1>Create a Post </h1>
+<form action="/newblog" method="POST">
+{% csrf_token %}
+Title: <input type="text" name="title"/><br/>
+Content: <br/>
+<textarea cols="35" rows="8" name="content">
+</textarea><br/>
+<input type="submit" value="Post"/>
+</form>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<html>
+<body>
+<h1>RESET PASSWORD</h1>
+
+<form action="/resetpass" method="POST">
+{% csrf_token %}
+
+EMAIL ID :<input type="text" name="emailid"/><br/>
+    ANSWER THE FOLLOWING SECURITY QUESTIONS...<br><br>
+FAVOURITE MOVIE ? :<input type="text" name="movie"/><br/>
+FAVOURITE DESSERT ? :<input type="text" name="dessert"/><br/>
+<br>
+<br>
+    NEW PASSWORD :<input type="password" name="newpassword"/><br/>
+RE-ENTER PASSWORD :<input type="password" name="copynpass"/><br/>
+    <br>
+<br>
+<input type="submit" value="RESET PASSWORD"/>
+</form>
+
+</body>
+
+</html>

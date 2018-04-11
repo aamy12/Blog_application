@@ -1,0 +1,14 @@
+<h1>My Blogs...</h1>
+{% if blogs %}
+<ul>
+{% for blog in blogs %}
+<li>
+<u> {{ blog.title }}</u>:<br>
+{{ blog.content }}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>You haven't posted anything yet.</p>
+<p>Start your blogs Now.</p>
+{% endif %}
+<a href="dashboard.html">Back Home</a>
