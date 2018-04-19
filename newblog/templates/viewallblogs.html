@@ -1,0 +1,15 @@
+<h1> Blogs...</h1>
+{% if blogs %}
+<ul>
+{% for blog in blogs %}
+<li>
+<u><a href="viewid={{blog.id}}">TITLE : {{ blog.title }}</a></u><br>
+   AUTHOR :  {{blog.emailid}}<br><br>
+{{ blog.content }}<br><br></li>
+{% endfor %}
+</ul>
+{% else %}
+<p>There are no posts yet.</p>
+<p>Start your blogs Now.</p>
+{% endif %}
+<a href="Home.html">Back Home</a>

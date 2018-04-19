@@ -16,3 +16,11 @@ class Blogs(models.Model):
     content= models.TextField()
     emailid= models.CharField(max_length=100)
 
+
+class BlogComments(models.Model):
+    blogid=models.IntegerField()
+    emailid = models.CharField(max_length=100)
+    comt = models.TextField()
+    name = models.CharField(max_length=100)
+
+

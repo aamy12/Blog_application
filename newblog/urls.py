@@ -4,8 +4,10 @@ from newblog import views
 
 urlpatterns = [
     url(r'^$', views.HomePageView.as_view()),
-    url(r'^index/$', views.HomePageView.as_view()),
-    url(r'index', views.HomePageView.as_view()),
+    url(r'Home', views.HomePageView.as_view()),
+
+    url(r'^index/$', views.indexPageView.as_view()),
+    url(r'index', views.indexPageView.as_view()),
 
     url(r'^register/$', views.RegisterPageView.as_view()),
     url(r'^register/', views.register),
@@ -22,6 +24,16 @@ urlpatterns = [
     url(r'^viewblog', views.ViewBlogPageView.as_view()),
 
     url(r'^reset', views.ResetPassPageView.as_view()),
-    url(r'^resetpass', views.resetPassword)
+    url(r'^passwordreset', views.resetPassword),
+
+    url(r'^viewallblogs', views.viewallblogs),
+
+    url(r'^blogid=(?P<pk>[0-9]+)$', views.editBlog, name='editblog'),
+    url(r'^editblog', views.updateBlog),
+
+    url(r'^postcomment', views.Comments),
+    url(r'^viewid=(?P<pk>[0-9]+)$', views.vieweachBlog, name='vieweachblog'),
+
+
  ]
 

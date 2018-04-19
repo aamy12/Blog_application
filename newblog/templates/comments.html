@@ -1,0 +1,40 @@
+<html>
+<body>
+
+<u>TITLE : {{ blogs.title }}</u><br>
+   AUTHOR :  {{blogs.emailid}}<br><br>
+{{ blogs.content }}<br><br>
+    </ul>
+
+
+
+{% if comments %}
+<ul>
+{% for i in comments %}
+<li>
+<u>EMAIL: {{ i.emailid }}</a></u><br>
+   NAME :  {{i.name}}<br><br>
+COMMENT :{{ i.comt }}<br><br></li>
+{% endfor %}
+</ul>
+{% else %}
+<p>There are no comments yet.</p>
+{% endif %}
+
+
+
+<form action="/postcomment" method="POST">
+{% csrf_token %}
+    Email-Id: <input type="text" name="emailid"/><br/>
+Name: <input type="text" name="name"/><br/>
+Comments: <br/>
+<textarea cols="35" rows="8" name="comments">
+</textarea><br/>
+    <input type="hidden" value="{{blogs.id}}" name="id">
+<input type="submit" value="comment"/>
+    <br>
+    <a href="Home.html">Back Home</a>
+
+</form>
+</body>
+</html>

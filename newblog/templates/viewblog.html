@@ -1,10 +1,24 @@
 <h1>My Blogs...</h1>
+<style>
+
+	u {
+    		color: black;
+	        font-size: 20px;
+    		text-align: center;
+		background-color: orange;
+	   }
+</style>
 {% if blogs %}
 <ul>
 {% for blog in blogs %}
 <li>
-<u> {{ blog.title }}</u>:<br>
-{{ blog.content }}</li>
+<u>TITLE : {{ blog.title }}</u><br>
+   <a href="blogid={{blog.id}}">Edit Post</a>
+   <br><br>
+   {{ blog.content }}
+   <br><br>
+
+</li>
 {% endfor %}
 </ul>
 {% else %}
