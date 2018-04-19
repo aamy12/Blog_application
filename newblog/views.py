@@ -39,11 +39,76 @@ class ResetPassPageView(TemplateView):
     template_name = "reset.html"
 
 
+<<<<<<< HEAD
 def viewallblogs(request):
     # user = request.session['emailid']
     # print(user)
     userblog = Blogs.objects.all()
     return render(request, 'viewallblogs.html', {'blogs': userblog})
+=======
+
+from django.contrib.auth import authenticate
+
+
+def resetPassword(request):
+	if request.method == 'POST':
+		print('hi')
+		emailid=request.POST.get('emailid')
+		movie=request.POST.get('movie')
+		dessert=request.POST.get('dessert')
+		password=request.POST.get('newpassword')
+		rpassword = request.POST.get('copynpass')
+		x=Post.objects.filter(emailid=emailid)
+		try:
+			if x[0].movie==movie and x[0].dessert==dessert:
+				request.session['emailid'] =x[0].emailid
+				if password==rpassword:
+					Post.objects.filter(emailid=emailid).update(password=password)
+					output = render(request,'login.html')
+				else:
+					output = render(request,'reset.html')
+			else:
+				output=render(request,'reset.html')
+		except:
+			output = render(request,'failed.html')
+
+	return output
+
+'''
+def resetPassword(request):
+	print("say hi")
+	if request.method == 'POST':
+		emailid = request.POST.get('emailid')
+		movie = request.POST.get('movie')
+		dessert = request.POST.get('dessert')
+		password = request.POST.get('newpassword')
+		#rpassword = request.POST.get('copynpass')
+
+		try:
+			user = authenticate(emailid=emailid, movie=movie, dessert=dessert)
+			if user is not None:
+				Post.objects.filter(emailid=emailid).update(password=password)
+				output = render(request, 'login.html')
+			else:
+				output = render(request, 'reset.html')
+		except:
+			output = render(request, 'failed.html')
+
+		return output
+
+'''
+
+def register(request):
+	if request.method == 'POST':
+		if request.POST.get('name') and request.POST.get('emailid') and request.POST.get('password'):
+			post = Post()
+			post.name = request.POST.get('name')
+			post.emailid = request.POST.get('emailid')
+			post.password = request.POST.get('password')
+			post.movie = request.POST.get('movie')
+			post.dessert = request.POST.get('dessert')
+			post.save()
+>>>>>>> origin/master
 
 
 from django.contrib.auth import authenticate
@@ -125,6 +190,7 @@ def validate(request):
     except:
         output = render(request, 'login.html')
 
+<<<<<<< HEAD
     return output
 
 
@@ -184,3 +250,32 @@ def Comments(request):
     else:
             return render(request, 'failed.html')
 
+=======
+		else:
+			return render(request, 'failed.html')
+'''
+def resetPassword(request):
+	if request.method == 'POST':
+		print('hi')
+		emailid=request.POST.get('emailid')
+		movie=request.POST.get('movie')
+		dessert=request.POST.get('dessert')
+		password=request.POST.get('newpassword')
+		rpassword = request.POST.get('copynpass')
+		x=Post.objects.filter(emailid=emailid)
+		try:
+			if x[0].movie==movie and x[0].dessert==dessert:
+				request.session['emailid'] =x[0].emailid
+				if password==rpassword:
+					Post.objects.filter(emailid=emailid).update(password=password)
+					output = render(request,'login.html')
+				else:
+					output = render(request,'reset.html')
+		except:
+			output = render(request,'failed.html')
+
+	return output
+
+'''
+
+>>>>>>> origin/master

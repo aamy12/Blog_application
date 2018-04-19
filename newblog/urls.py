@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^reset', views.ResetPassPageView.as_view()),
     url(r'^passwordreset', views.resetPassword),
 
+<<<<<<< HEAD
     url(r'^viewallblogs', views.viewallblogs),
 
     url(r'^blogid=(?P<pk>[0-9]+)$', views.editBlog, name='editblog'),
@@ -35,5 +36,7 @@ urlpatterns = [
     url(r'^viewid=(?P<pk>[0-9]+)$', views.vieweachBlog, name='vieweachblog'),
 
 
+=======
+>>>>>>> origin/master
  ]
 
